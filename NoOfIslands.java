@@ -41,32 +41,8 @@ public class NoOfIslands {
                 }
             }
         }
-        Map<Character, Integer> map = new HashMap<>();
-//        map.getOrDefault(map.get(s.charAt(i)++), 1);
-        map.put('s', 1);
-        map.put('a', 2);
-        map.put('b', 3);
 
-        Map<Character, Integer> nap = new HashMap<>();
-//        map.getOrDefault(map.get(s.charAt(i)++), 1);
-        nap.put('s', 1);
-        nap.put('c', 2);
-        nap.put('b', 3);
-//        if(map.containsKey('b')){
-//            map.put('b', map.get('b')+1);
-//        }
-        System.out.println(map);
-
-//        for(Map.Entry<Character, Integer> entry : map.entrySet()){
-//            if(entry.getValue() > 1){
-//                System.out.println(entry.getKey());
-//            }
-//        }
-
-        System.out.println(map.equals(nap));
         return cnt;
-
-
     }
 
     private static void bfs(int ro, int co, int[][] visited, char[][] grid){

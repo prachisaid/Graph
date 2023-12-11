@@ -1,5 +1,7 @@
 package Graphs;
 
+import java.util.Random;
+
 public class StringToInt {
     public static void main(String[] args) {
         String[] details = {
@@ -7,7 +9,11 @@ public class StringToInt {
                 "0234451011F8013","4294552179O6482"
         };
 
-        System.out.println(new StringToInt().countSeniors(details));
+//        System.out.println(new StringToInt().countSeniors(details));
+        Random r = new Random();
+        for(int i = 0; i < 20; i++){
+            System.out.println(r.nextInt(100 ) % 6);
+        }
     }
 
     public int countSeniors(String[] details) {
@@ -16,6 +22,10 @@ public class StringToInt {
 
         for(int i = 0; i < details.length; i++){
             String pass = details[i];
+            String ch = pass.substring(10, 11);
+            if(ch.equals("O")){
+                continue;
+            }
             int age = Integer.parseInt(pass.substring(11, 13));
             if(age >= 60){
                 System.out.println(age + " " + ans);

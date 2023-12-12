@@ -70,10 +70,18 @@ public class ShortestPathDAG {
     private void topo(int node, ArrayList<ArrayList<Pair>> adj, int[] visited, Stack<Integer> stack) {
         visited[node] = 1;
 
-        for(int i = 0; i < adj.get(node).size(); i++){
-            int v = adj.get(node).get(i).first;
+//        for(int i = 0; i < adj.get(node).size(); i++){
+//            int v = adj.get(node).get(i).first;
+//
+//            if(visited[v] == 0) topo(v, adj, visited, stack);
+//        }
 
-            if(visited[v] == 0) topo(v, adj, visited, stack);
+        for(Pair p : adj.get(node)) {
+            int v = p.first;
+
+            if(visited[v] == 0) {
+                topo(v, adj, visited, stack);
+            }
         }
 
         stack.push(node);

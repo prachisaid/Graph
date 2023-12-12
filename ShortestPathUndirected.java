@@ -24,6 +24,7 @@ public class ShortestPathUndirected {
 
         int[] dist = new int[n];
         Arrays.fill(dist, (int)(1e9));
+        dist[src] = 0;
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(src, 0));
 

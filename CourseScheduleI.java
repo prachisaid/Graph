@@ -10,7 +10,7 @@ public class CourseScheduleI {
 
     }
 
-    public boolean isPossible(int N,int P, int[][] prerequisites){
+    public boolean isPossible(int N, int P, int[][] prerequisites){
         ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>();
 
         for(int i = 0; i < N; i++){

@@ -19,7 +19,8 @@ public class NearestOne {
         int[][] grid = {
                 {0, 0, 0},
                 {0, 1, 0},
-                {1, 0, 1}
+                {1, 0, 1},
+                {2, 3, 4}
         };
 
         int[][] ans = nearest(grid);
@@ -32,43 +33,87 @@ public class NearestOne {
         }
     }
 
+//    public static int[][] nearest(int[][] grid) {
+//        int n = grid.length;
+//        int m = grid[0].length;
+//        int[][] visited = new int[n][m];
+//        int[][] dist = new int[n][m];
+//        Queue<Node> q = new LinkedList<>();
+//
+//        for(int i = 0; i < n; i++){
+//            for(int j = 0; j < m; j++){
+//                if(grid[i][j] == 1){
+//                    q.add(new Node(i, j, 0));
+//                    visited[i][j] = 1;
+//                }
+//            }
+//        }
+//
+//        int[] delRow = {-1, 0, +1, 0};
+//        int[] delCol = {0, +1, 0, -1};
+//
+//        while(!q.isEmpty()){
+//            int row = q.peek().first;
+//            int col = q.peek().second;
+//            int steps = q.peek().third;
+//            q.remove();
+//            dist[row][col] = steps;
+//
+//            for(int i = 0; i < delRow.length; i++){
+//                int nrow = row + delRow[i];
+//                int ncol = col + delCol[i];
+//
+//                if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == 0){
+//                    visited[nrow][ncol] = 1;
+//                    q.add(new Node(nrow, ncol, steps+1));
+//                }
+//            }
+//        }
+//
+//        return dist;
+//    }
+
     public static int[][] nearest(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
-        int[][] visited = new int[n][m];
-        int[][] dist = new int[n][m];
+
+        System.out.println(n + " " + m);
         Queue<Node> q = new LinkedList<>();
+        int [][] visited = new int[n][m];
+        int [][] dist = new int[n][m];
 
         for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                if(grid[i][j] == 1){
-                    q.add(new Node(i, j, 0));
+            for(int j = 0; j < m; j++) {
+                if(grid[i][j] == 1) {
+                    q.offer(new Node(i, j, 0));
                     visited[i][j] = 1;
                 }
             }
         }
 
-        int[] delRow = {-1, 0, +1, 0};
-        int[] delCol = {0, +1, 0, -1};
+        int [] delRow = {-1, 0, 1, 0};
+        int [] delCol = {0, 1, 0, -1};
 
-        while(!q.isEmpty()){
+        while(!q.isEmpty()) {
             int row = q.peek().first;
             int col = q.peek().second;
-            int steps = q.peek().third;
-            q.remove();
-            dist[row][col] = steps;
+            int dis = q.peek().third;
 
-            for(int i = 0; i < delRow.length; i++){
+            q.poll();
+            dist[row][col] = dis;
+
+            for(int i = 0; i < delRow.length; i++) {
                 int nrow = row + delRow[i];
                 int ncol = col + delCol[i];
 
-                if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == 0){
+                if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == 0 && grid[nrow][ncol] == 0) {
+                    q.offer(new Node(nrow, ncol, dis + 1));
                     visited[nrow][ncol] = 1;
-                    q.add(new Node(nrow, ncol, steps+1));
                 }
             }
         }
 
         return dist;
     }
+
 }

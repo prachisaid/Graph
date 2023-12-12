@@ -11,6 +11,8 @@ public class AlienDictionary {
                 "baa", "abcd", "abca", "cab", "cad"
         };
 
+        System.out.println('b' - 'a');
+
         System.out.println(new AlienDictionary().findOrder(dict, 5, 4));
     }
 

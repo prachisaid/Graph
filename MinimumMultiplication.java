@@ -4,9 +4,9 @@ import java.util.*;
 
 public class MinimumMultiplication {
     public static void main(String[] args) {
-        int[] arr = {3, 4, 65};
+        int[] arr = {2, 5, 7};
 
-        System.out.println(new MinimumMultiplication().minimumMultiplications(arr, 7, 66175));
+        System.out.println(new MinimumMultiplication().minimumMultiplicationsI(arr, 3, 75));
     }
 
     int minimumMultiplications(int[] arr, int start, int end) {
@@ -31,6 +31,37 @@ public class MinimumMultiplication {
                     q.add(new Pair(steps + 1, tempval));
                     if(tempval == end) return steps + 1;
                     dist[tempval] = steps + 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    int minimumMultiplicationsI(int[] arr, int start, int end) {
+        Queue<Pair> q = new LinkedList<>();
+        q.offer(new Pair(0, start));
+
+        int[] dist = new int[100000];
+        Arrays.fill(dist, (int) (1e9));
+        dist[start] = 0;
+
+        int mod = 100000;
+
+        while(!q.isEmpty()) {
+            int steps = q.peek().first;
+            int node = q.peek().second;
+
+            q.poll();
+
+            for(int j : arr) {
+                int newMul = (node * j) % mod;
+                int newStep = steps + 1;
+
+                if(dist[newMul] > newStep) {
+                    dist[newMul] = newStep;
+                    if(newMul == end) return newStep;
+                    q.add(new Pair(newStep, newMul));
                 }
             }
         }

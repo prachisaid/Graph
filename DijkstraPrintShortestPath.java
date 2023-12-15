@@ -2,7 +2,7 @@ package Graphs;
 
 import java.util.*;
 
-public class PrintShortestPath {
+public class DijkstraPrintShortestPath {
     public static void main(String[] args) {
         int[][] arr = {
                 {1, 2, 2},

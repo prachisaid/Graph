@@ -8,7 +8,6 @@ public class CheapestFlight {
     public static void main(String[] args) {
 
     }
-
         class Pair{
             int first;
             int second;

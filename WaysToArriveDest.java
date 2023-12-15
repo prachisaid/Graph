@@ -33,6 +33,7 @@ public class WaysToArriveDest {
 
         dist[0] = 0;
         ways[0] = 1;
+        int mod = (int) (1e9 + 7);
 
         while(!pq.isEmpty()){
             int node = pq.peek().second;
@@ -45,8 +46,11 @@ public class WaysToArriveDest {
 
                 if(dis + edW < dist[adjNode]){
                     dist[adjNode] = dis + edW;
-                    ways[adjNode] += ways[node];
+                    ways[adjNode] = ways[node];
                     pq.add(new Pair(dis+edW, adjNode));
+                }
+                else if(dis + edW == dist[adjNode]) {
+                    ways[adjNode] = (ways[adjNode] + ways[node]) % mod;
                 }
             }
         }

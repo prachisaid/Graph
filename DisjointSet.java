@@ -2,13 +2,13 @@ package Graphs;
 
 import java.util.*;
 
-public class DisjointSet {
+class DisjointSet {
     List<Integer> rank = new ArrayList<>();
     List<Integer> parent = new ArrayList<>();
     List<Integer> size = new ArrayList<>();
 
     DisjointSet(int n) {
-        for(int i = 0; i <= n; i++) {
+        for(int i = 0; i < n; i++) {
             parent.add(i);
             rank.add(0);
             size.add(1);
@@ -56,6 +56,8 @@ public class DisjointSet {
             parent.set(ulp_v, ulp_u);
             size.set(ulp_u, size.get(ulp_u) + size.get(ulp_v));
         }
+
+        System.out.println(parent);
     }
 
     public static void main(String[] args) {

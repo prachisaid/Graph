@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberOfIslandsII {
-
-   git add 
     private boolean valid(int adjRow, int adjCol, int n, int m) {
         return adjRow >= 0 && adjRow < n && adjCol >= 0 && adjCol < m;
     }
